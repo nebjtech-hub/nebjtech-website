@@ -285,16 +285,15 @@ export default function App() {
     setFormStatus(null);
 
     try {
-      const response = await fetch("/", {
+      const response = await fetch("https://formspree.io/f/mykyvrdj", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          "form-name": "contact",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           service: formData.service,
           message: formData.message,
-        }).toString(),
+        }),
       });
 
       if (response.ok) {
@@ -349,7 +348,7 @@ export default function App() {
       <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6">
           <a href="#top" className="flex items-center gap-3">
-            <img src="/logo.png" alt="NEBJ Tech" className="h-28 w-28 rounded-xl object-contain" />
+            <img src="/logo.png" alt="NEBJ Tech" className="h-14 w-14 rounded-xl object-contain" />
             <div className="leading-tight">
               <p className="text-sm font-semibold">NEBJ Tech</p>
               <p className="text-xs text-slate-500">Digital Solutions</p>
